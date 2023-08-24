@@ -1,0 +1,11 @@
+server:
+  port: 0
+
+spring:
+  r2dbc:
+    password: postgresql1234
+    url: r2dbc:postgresql://cloud.vscperu.com:5432/municajdb
+    username: postgresql
+    pool:
+      max-size: 10
+      max-create-connection-time: 10s
