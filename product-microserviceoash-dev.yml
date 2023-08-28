@@ -2,6 +2,7 @@ server:
   port: 0
 
 spring:
+  # BASE DE DATOS
   r2dbc:
     password: postgresql1234
     url: r2dbc:postgresql://cloud.vscperu.com:5432/municajdb
@@ -9,6 +10,12 @@ spring:
     pool:
       max-size: 10
       max-create-connection-time: 10s
+  # RABBITMQ
+  rabbitmq:
+    host: cloud.vscperu.com
+    port: 5672
+    username: ${rabbitmqusername}
+    password: ${rabbitmqpassword}
 
 # SWAGGER
 springdoc:
@@ -17,3 +24,19 @@ springdoc:
   swagger-ui:
     path: /swagger-ui-custom.html
     operationsSorter: method
+
+# EUREKA
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://cloud.vscperu.com:8761/eureka
+
+# ACTUATOR - MONITOR
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, bus-refresh
