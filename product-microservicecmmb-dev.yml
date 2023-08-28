@@ -17,6 +17,13 @@ spring:
     username: ${rabbitmqusername}
     password: ${rabbitmqpassword}
 
+#KEYCLOAK
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://cloud.vscperu.com:9090/realms/msrealm
+
 # SWAGGER
 springdoc:
   api-docs:
